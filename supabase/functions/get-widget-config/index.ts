@@ -59,6 +59,7 @@ Deno.serve(async (req) => {
         client: {
           id: botId,
           name: bot.name || "",
+          assitant_id: bot.assistant_id || "",
         },
         config: {
           theme: {
