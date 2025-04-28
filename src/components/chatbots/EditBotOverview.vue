@@ -6,6 +6,22 @@
   </div>
   <v-text-field block v-model="botName" class="mt-6"></v-text-field>
 
+  <h6 class="text-h6">Chatbot Widget Colors</h6>
+  <div class="form-label my-2">Customize your bot to your brand's colors</div>
+  <div class="d-flex pa-2">
+    <div
+      class="colorBox mr-2"
+      :style="{ backgroundColor: backgroundColor }"
+      @click.prevent="showColorPicker = true"
+    ></div>
+
+    <v-color-picker
+      v-if="showColorPicker"
+      v-model="backgroundColor"
+      mode="hex"
+    ></v-color-picker>
+  </div>
+
   <h6 class="text-h6">Chatbot Installation Code</h6>
   <div class="form-label my-2">
     This code will add your Chatbot to your website. You can add it to the
@@ -38,8 +54,10 @@ const botStore = useBotStore();
 const botId = route.params.botId;
 const widgetCode = `<script type="module" src="https://kmztjgixkokzhnxczhpk.netlify.app/bixby-widget.js" data-client-id="${botId}"><\/script>`;
 const botName = ref("");
+const backgroundColor = ref(null);
 const copyResult = ref("");
 const copying = ref(false);
+const showColorPicker = ref(false);
 
 const getOverview = () => {
   try {
@@ -50,6 +68,7 @@ const getOverview = () => {
     }
 
     botName.value = botData.name;
+    backgroundColor.value = botData.appearance.primaryColor;
   } catch (error) {
     console.error("Error fetching bot data:", error);
   }
@@ -78,3 +97,13 @@ onMounted(() => {
   getOverview();
 });
 </script>
+
+<style scoped>
+.colorBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+</style>
