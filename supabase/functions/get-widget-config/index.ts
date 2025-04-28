@@ -58,19 +58,19 @@ Deno.serve(async (req) => {
         bot,
         client: {
           id: botId,
-          name: "Demo Company",
+          name: bot.name || "",
         },
         config: {
-          theme: bot.appearance || {
+          theme: {
             position: {
               bottom: "20px",
               right: "20px",
             },
             button: {
               size: "60px",
-              backgroundColor: "#1867C0",
+              backgroundColor: bot.appearance?.primaryColor || "#1867C0",
               iconColor: "white",
-              hoverColor: "#1557A0",
+              hoverColor: bot.appearance?.primaryColor || "#1557A0",
             },
             window: {
               width: "350px",
@@ -79,7 +79,7 @@ Deno.serve(async (req) => {
               borderRadius: "12px",
             },
             header: {
-              backgroundColor: "#1867C0",
+              backgroundColor: bot.appearance?.primaryColor || "#1867C0",
               textColor: "white",
             },
             messages: {
@@ -96,8 +96,9 @@ Deno.serve(async (req) => {
             inputPlaceholder: "Type your message...",
             sendButtonText: "Send",
           },
-          personality: bot.personality || {
-            greeting: "Hello! How can I help you today?",
+          personality: {
+            greeting:
+              bot.personality?.greeting || "Hello! How can I help you today?",
           },
         },
       }),
