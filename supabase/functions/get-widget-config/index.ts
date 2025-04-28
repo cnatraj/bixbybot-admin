@@ -57,7 +57,7 @@ Deno.serve(async (req) => {
       JSON.stringify({
         bot,
         client: {
-          id: clientId,
+          id: botId,
           name: "Demo Company",
         },
         config: {
