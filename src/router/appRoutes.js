@@ -35,7 +35,7 @@ export const appRoutes = [
     path: "/conversations",
     name: "Conversations",
     component: () => import("@/views/App/conversations/Index.vue"),
-    meta: { requiresAuth: true, title: "Chatbots" },
+    meta: { requiresAuth: true, title: "Conversations" },
   },
   {
     path: "/reports",

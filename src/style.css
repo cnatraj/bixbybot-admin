@@ -21,8 +21,14 @@
 .text-h6,
 .text-body-1,
 .text-body-2,
-.text-subtitle-2 {
+.text-subtitle-2,
+.text-caption,
+.text-tiny {
   font-family: "Be Vietnam Pro", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+}
+
+.text-tiny {
+  font-size: 0.65rem !important;
 }
 * {
   box-sizing: border-box;

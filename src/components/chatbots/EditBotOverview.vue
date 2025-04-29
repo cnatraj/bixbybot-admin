@@ -52,7 +52,11 @@ import { useBotStore } from "@/stores/botStore";
 const route = useRoute();
 const botStore = useBotStore();
 const botId = route.params.botId;
-const widgetCode = `<script type="module" src="https://kmztjgixkokzhnxczhpk.netlify.app/bixby-widget.js" data-client-id="${botId}"><\/script>`;
+const widgetCode = `
+  <!-- Bixby Chatbot Widget -->
+  <script type="module" src="https://chat.bixbybot.com/bixby-widget.iife.js" data-bot-id="${botId}"><\/script>
+  <!-- Bixby Chatbot Widget -->
+  `;
 const botName = ref("");
 const backgroundColor = ref(null);
 const copyResult = ref("");
